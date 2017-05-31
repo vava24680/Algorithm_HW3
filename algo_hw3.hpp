@@ -34,6 +34,8 @@ void LCS(int *, int*, int*);
 
 void LCS(int* X, int* Y, int* C)
 {
+	int* first_string = X;
+	int* second_string = Y;
 	int first_size = X[0];//First string length
 	int second_size = Y[0];//Secode string length
 	int** lcs_length_table;
@@ -51,5 +53,24 @@ void LCS(int* X, int* Y, int* C)
 	for(int i=0;i<first_size;i++)
 	{
 		lcs_length_table[i][0] = 0;
+	}
+	for(int i=1;i<=first_size;i++)
+	{
+		for(int j=1;j<=second_size;j++)
+		{
+			if(first_string[i]==second_string[i])
+			{
+				lcs_length_table[i][j] = lcs_length_table[i-1][j-1]+1;
+				//NO direction record
+			}
+			else if(lcs_length_table[i-1][j]>=lcs_length_table[i][j-1])
+			{
+				lcs_length_table[i][j] = lcs_length_table[i-1][j];
+			}
+			else
+			{//lcs_length_table[i][j-1] is larger
+				lcs_length_table[i][j] = lcs_length_table[j][i-1];
+			}
+		}
 	}
 }
