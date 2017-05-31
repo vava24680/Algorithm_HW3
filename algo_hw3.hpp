@@ -74,3 +74,23 @@ void LCS(int* X, int* Y, int* C)
 		}
 	}
 }
+
+void extract_LCS(int* first_string, int* dst_string, int** lcs_length_table, int row_index, int col_index)
+{
+	if(row_index==0 || col_index==0)
+		return;
+	if(lcs_length_table[row_index][col_index]==lcs_length_table[row_index-1][col_index])
+	{
+		extract_LCS(first_string,lcs_length_table,row_index-1,col_index);
+	}
+	else if(lcs_length_table[row_index][col_index]==lcs_length_table[row_index][col_index-1])
+	{
+		extract_LCS(first_string,lcs_length_table,row_index,col_index-1);
+	}
+	else
+	{//Only extract the character out onlf if first_string[row_index]==second_string[col_index]
+	 //Or it will not be called as Longest Common sequence.
+		extract_LCS(first_string,lcs_length_table,row_index-1,col_index-1);
+		dst_string[row_index] = first_string[row_index];
+	}
+}
