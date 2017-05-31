@@ -34,8 +34,8 @@ void LCS(int *, int*, int*);
 
 void LCS(int* X, int* Y, int* C)
 {
-	int first_size = X[0];
-	int second_size = Y[0];
+	int first_size = X[0];//First string length
+	int second_size = Y[0];//Secode string length
 	int** lcs_length_table;
 	lcs_length_table = new int*[first_size];
 	for(int i=0;i<first_size;i++)
