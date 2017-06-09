@@ -45,7 +45,11 @@ int main()
         str2.clear();
         cout<<"\nFor the final result which is str3 is as ";
         for(int i=0;i<s3_length;i++)
-            printf("%c ",s3[i]);
+        {
+			if(s3[i]==-1)
+				break;
+			printf("%c ",s3[i]);
+		}
         delete s1;
         delete s2;
         delete s3;
