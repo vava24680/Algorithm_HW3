@@ -23,7 +23,6 @@ int main() {
 	Y[0] = Y.size();
 
 
-	LCS(X.data(), Y.data(), C.data());
 
 
 	int lcs_ans = 4;
@@ -33,14 +32,13 @@ int main() {
 			++counter;
 		}
 	}
-	
+
 	cout << "LCS length is " << (counter == lcs_ans) << '\n';
 
 	string EXPECT{ "PPAP" };
 	for (auto i = 0; i < EXPECT.size(); ++i) {
 		ANS[i] = static_cast<int>(EXPECT[i]);
 	}
-	
 	cout << "answer string is " << std::equal(C.begin(),C.end(), ANS.begin()) << '\n';
 
 }
